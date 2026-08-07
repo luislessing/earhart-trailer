@@ -37,6 +37,26 @@ sudo pacman -S --needed --noconfirm \
 
 echo "==> enabling the display manager (starts on next boot)"
 sudo systemctl enable lightdm.service
+# `enable` alone only makes lightdm start once graphical.target is
+# reached — on a headless install the default target is still
+# multi-user.target (plain console), so without this line the machine
+# reboots straight back to a text login and lightdm never runs.
+sudo systemctl set-default graphical.target
+
+echo "==> forcing the X11 Xfce session (xfce4-session also ships an"
+echo "    experimental xfce-wayland one, which the greeter can end up"
+echo "    defaulting to on a first login — and it has no compositor"
+echo "    installed to actually run, so it would die instantly)"
+sudo mkdir -p /etc/lightdm/lightdm.conf.d
+printf '[Seat:*]\nuser-session=xfce\n' | sudo tee /etc/lightdm/lightdm.conf.d/50-lastline.conf >/dev/null
+# belt and suspenders, and the only fix that matters if lightdm ever
+# gets swapped for sddm/gdm: remove the wayland entry outright so it
+# can't be offered/defaulted-to at all, on any display manager.
+if [[ -f /usr/share/wayland-sessions/xfce-wayland.desktop ]]; then
+  sudo mv /usr/share/wayland-sessions/xfce-wayland.desktop \
+          /usr/share/wayland-sessions/xfce-wayland.desktop.disabled
+fi
+rm -f "$RICE_HOME/.dmrc"
 
 if $SET_HOSTNAME; then
   echo "==> setting hostname to ${HOSTNAME_LABEL}"

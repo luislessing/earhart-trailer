@@ -86,6 +86,56 @@ Sobald eure echte Forum-Seite eine URL hat:
 - Bildschirmschoner/Sperre aus, falls die Aufnahme länger dauert:
   Einstellungen → Energieverwaltung / Bildschirmschoner.
 
+## Troubleshooting: bleibt bei Text-Login hängen / `cannot open display`
+
+Passiert, wenn das System nach dem Neustart weiter im Text-Modus bootet
+statt grafisch — `systemctl enable lightdm` reicht dafür allein nicht,
+es startet lightdm nur, *wenn* `graphical.target` erreicht wird. Prüfen:
+
+```sh
+systemctl get-default          # sollte "graphical.target" ausgeben
+sudo systemctl set-default graphical.target
+sudo systemctl isolate graphical.target   # sofort testen, ohne Reboot
+```
+
+Kommt danach immer noch kein Greeter, die eigentliche Fehlerursache holen:
+
+```sh
+systemctl status lightdm --no-pager
+journalctl -u lightdm -b --no-pager | tail -60
+cat /var/log/Xorg.0.log 2>/dev/null | tail -60 || cat ~/.local/share/xorg/Xorg.0.log | tail -60
+```
+
+## Troubleshooting: Login "erfolgreich", aber Bildschirm springt sofort zurück
+
+`journalctl -b` zeigt eine Session, die nach <1s wieder geschlossen wird,
+oft mit `type 'wayland'`. Ursache: `xfce4-session` bringt neben der
+normalen X11-Session (`/usr/share/xsessions/xfce.desktop`) eine
+experimentelle `xfce-wayland.desktop` unter
+`/usr/share/wayland-sessions/` mit. Ohne installierten Wayland-Compositor
+stirbt die sofort. Wenn der Greeter die beim allerersten Login als
+Standard vorschlägt (und `~/.dmrc` das dann speichert), landet man in
+einer Schleife, die aussieht, als würde der Login gar nicht klappen.
+
+Das passiert unabhängig davon, wie XFCE installiert wurde — auch mit
+`archinstall`s eigenem Xfce4-Profil, ganz ohne `install.sh`, weil die
+Datei aus dem `xfce4-session`-Paket selbst kommt.
+
+`install.sh` behebt das inzwischen doppelt: `user-session=xfce` global
+über `/etc/lightdm/lightdm.conf.d/50-lastline.conf` (falls lightdm zum
+Einsatz kommt) und zusätzlich wird die Wayland-Sitzung komplett
+deaktiviert, damit sie auf keinem Display-Manager (lightdm/sddm/gdm)
+mehr angeboten werden kann. Bei einer bereits installierten Maschine von
+Hand nachziehen — der zweite Befehl ist der eigentlich robuste, weil er
+unabhängig vom Display-Manager funktioniert:
+
+```sh
+sudo mv /usr/share/wayland-sessions/xfce-wayland.desktop \
+        /usr/share/wayland-sessions/xfce-wayland.desktop.disabled
+rm -f ~/.dmrc
+sudo systemctl restart display-manager
+```
+
 ## Schnelles Iterieren ohne Neustart
 
 ```sh
