@@ -1,0 +1,182 @@
+/* PARAPORTAL.de – ~2004 phpBB-Ästhetik in dunkel, absichtlich altbacken */
+* { box-sizing: content-box; }
+body {
+  margin: 0;
+  background: #121417 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><rect width="4" height="4" fill="%23121417"/><rect width="1" height="1" fill="%23191d21"/></svg>');
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  color: #c5c9cd;
+}
+a { color: #8ab4d8; text-decoration: none; }
+a:hover { color: #e0a34a; text-decoration: underline; }
+.wrap { width: 960px; margin: 8px auto; }
+.header {
+  background: linear-gradient(#1f2c3a, #090d12);
+  border: 1px solid #000;
+  padding: 10px 14px;
+  color: #dfe6ec;
+}
+.logo { font-family: "Times New Roman", serif; font-size: 34px; letter-spacing: 3px; font-weight: bold; text-shadow: 2px 2px 0 #000; }
+.logo .eye { color: #5fb8ef; }
+.slogan { font-size: 10px; color: #6e88a3; font-style: italic; letter-spacing: 1px; }
+.navbar {
+  background: linear-gradient(#2b3c4d, #17222c);
+  border: 1px solid #000; border-top: none;
+  padding: 4px 10px;
+  color: #b9cede; font-size: 10px; font-weight: bold;
+}
+.navbar a { color: #b9cede; }
+.marquee-box {
+  overflow: hidden; white-space: nowrap;
+  background: #000; color: #0f0;
+  font-family: "Courier New", monospace; font-size: 11px;
+  border: 1px solid #333; border-top: none;
+  padding: 2px 0;
+}
+.marquee-box span {
+  display: inline-block; padding-left: 100%;
+  animation: scroll 32s linear infinite;
+}
+@keyframes scroll { to { transform: translateX(-100%); } }
+.new { animation: blink 1s steps(2, start) infinite; color: #ff5a4a; font-weight: bold; font-size: 9px; }
+@keyframes blink { to { visibility: hidden; } }
+.footer { text-align: center; font-size: 10px; color: #6f767d; margin: 12px 0 20px; }
+.counter {
+  font-family: "Courier New", monospace; background: #000; color: #ff0;
+  padding: 1px 5px; letter-spacing: 2px; border: 1px inset #444;
+}
+.banner {
+  margin-top: 10px; border: 2px dashed #6b5d33; background: #221d10;
+  text-align: center; padding: 6px; font-size: 10px; color: #cdbd85;
+}
+.banner b { color: #e06a5a; }
+.banner a { color: #d8a83c; }
+
+/* --- Forenübersicht --- */
+table.forum {
+  width: 100%; border-collapse: collapse;
+  background: #1b1e22; border: 1px solid #3a444d;
+  margin-top: 10px;
+}
+table.forum th {
+  background: linear-gradient(#33475c, #1a252f);
+  color: #b9cede; font-size: 10px; padding: 4px 6px;
+  border: 1px solid #3a444d;
+}
+table.forum td { border: 1px solid #3a444d; padding: 5px 6px; vertical-align: middle; }
+td.cat {
+  background: linear-gradient(#2c3944, #1c242c);
+  font-weight: bold; font-size: 11px; color: #9db8d2;
+}
+td.row1 { background: #24282d; }
+td.row2 { background: #1e2226; }
+.f-title { font-weight: bold; font-size: 12px; }
+.f-desc { font-size: 10px; color: #8a9198; }
+.small { font-size: 10px; color: #7a828a; }
+.center { text-align: center; }
+.icon {
+  width: 30px; height: 30px; display: inline-block; vertical-align: middle;
+  border-radius: 2px; border: 1px solid #000; opacity: .85;
+}
+.loginbox, .statbox {
+  background: #1b1e22; border: 1px solid #3a444d;
+  margin-top: 10px; padding: 8px; font-size: 10px; color: #a9afb5;
+}
+.loginbox input[type=text], .loginbox input[type=password] {
+  border: 1px solid #3a444d; background: #14171a; color: #c5c9cd;
+  font-size: 10px; padding: 1px 3px; width: 110px;
+}
+.loginbox input[type=submit] {
+  font-size: 10px; padding: 1px 8px;
+  background: #2c3944; color: #b9cede; border: 2px outset #4a5a6a;
+}
+
+/* --- Threadansicht --- */
+.breadcrumb { margin: 10px 0 4px; font-size: 10px; }
+.breadcrumb a { font-weight: bold; }
+h1.topic { font-size: 14px; margin: 2px 0 8px; color: #b9cede; }
+.btnrow { margin: 6px 0; }
+.btn {
+  display: inline-block; background: linear-gradient(#33475c, #1a252f);
+  color: #b9cede; font-size: 10px; font-weight: bold;
+  padding: 3px 12px; border: 1px solid #0d1319;
+}
+.btn:hover { color: #e0a34a; text-decoration: none; }
+table.posts {
+  width: 100%; border-collapse: collapse;
+  background: #1b1e22; border: 1px solid #3a444d;
+}
+table.posts th {
+  background: linear-gradient(#33475c, #1a252f);
+  color: #b9cede; font-size: 10px; padding: 4px 6px;
+  border: 1px solid #3a444d; text-align: left;
+}
+table.posts td { border: 1px solid #3a444d; padding: 8px; vertical-align: top; }
+td.userA { background: #24282d; width: 160px; }
+td.userB { background: #1e2226; width: 160px; }
+td.postA { background: #1d2126; }
+td.postB { background: #22262b; }
+.uname { font-weight: bold; font-size: 12px; color: #dfe6ec; }
+.rank { font-size: 9px; color: #7a828a; }
+.rank .stars { color: #d8a83c; letter-spacing: 1px; }
+.avatar {
+  width: 80px; height: 80px; margin: 6px 0;
+  border: 1px solid #555;
+  display: flex; align-items: center; justify-content: center;
+  font-family: "Times New Roman", serif; font-size: 34px; color: #fff;
+  text-shadow: 1px 1px 0 #000;
+}
+.udetail { font-size: 9px; color: #8a9198; line-height: 1.6; }
+.posthead { font-size: 9px; color: #7a828a; border-bottom: 1px solid #3a444d; padding-bottom: 4px; margin-bottom: 8px; }
+.posthead b { color: #a9afb5; }
+.postbody { font-size: 11px; line-height: 1.55; }
+.postbody b { color: #dfe6ec; }
+.quote {
+  background: #221d10; border: 1px solid #5a4f2c;
+  margin: 8px 0; padding: 5px 8px; font-size: 10px; color: #cdbd85;
+}
+.quote .qhead { font-weight: bold; font-size: 9px; color: #96895c; margin-bottom: 3px; }
+.sig { border-top: 1px solid #3a444d; margin-top: 12px; padding-top: 4px; font-size: 9px; color: #7a828a; font-style: italic; }
+.edited { font-size: 9px; color: #6f767d; margin-top: 8px; }
+.imgmissing {
+  border: 1px solid #555; background: #26292d; color: #8a9198;
+  display: inline-block; padding: 18px 30px; font-size: 9px; margin: 6px 0;
+}
+.modnote { color: #ff6a5a; font-weight: bold; }
+.pagenav { text-align: right; font-size: 10px; margin: 6px 0; }
+.pagenav b { background: #33475c; color: #dfe6ec; padding: 1px 5px; }
+.pagenav a { border: 1px solid #3a444d; padding: 1px 5px; background: #1b1e22; }
+.online { color: #5fbf5f; font-size: 9px; font-weight: bold; }
+.offline { color: #6f767d; font-size: 9px; }
+.replybox {
+  background: #1b1e22; border: 1px solid #3a444d; margin-top: 10px; padding: 8px;
+}
+.replybox textarea {
+  width: 99%; height: 90px; font-family: Verdana, sans-serif; font-size: 11px;
+  border: 1px solid #3a444d; background: #14171a; color: #c5c9cd;
+}
+.replybox input[type=submit] {
+  font-size: 10px; padding: 2px 10px; background: #2c3944; color: #b9cede; border: 2px outset #4a5a6a; margin-top: 4px;
+}
+
+/* --- Startseiten-Geröll: Umfrage, Shoutbox, Partnerbuttons --- */
+.boxrow { display: flex; gap: 10px; margin-top: 10px; }
+.boxrow .statbox { margin-top: 0; flex: 1; }
+.pollbar-track { background: #14171a; border: 1px inset #444; height: 10px; margin: 2px 0 6px; }
+.pollbar { height: 10px; background: linear-gradient(#e0a34a, #8a5a1a); }
+.pollbar.alt1 { background: linear-gradient(#5fb8ef, #1e5a8a); }
+.pollbar.alt2 { background: linear-gradient(#5fbf5f, #1e6a1e); }
+.pollbar.alt3 { background: linear-gradient(#c98fe5, #6d2b94); }
+.shout { font-size: 10px; line-height: 1.7; }
+.shout .sname { font-weight: bold; color: #9db8d2; }
+.shout .stime { color: #5c646b; font-size: 9px; }
+.btn88 {
+  display: inline-block; width: 88px; height: 31px; line-height: 31px;
+  text-align: center; font-size: 9px; font-weight: bold; letter-spacing: 1px;
+  border: 1px outset #555; margin: 2px 1px; overflow: hidden;
+  color: #fff !important; text-decoration: none !important;
+}
+.subforums { font-size: 9px; color: #7a828a; }
+.subforums a { color: #7fa8c9; }
+.modline { font-size: 9px; color: #5c646b; }
+.lockicon { color: #7a828a; font-size: 9px; }

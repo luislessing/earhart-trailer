@@ -1,0 +1,29 @@
+/* ~/.mozilla/firefox/lastline/chrome/userChrome.css
+ *
+ * Small tint pass on top of Firefox's built-in Dark theme: swap its
+ * blue selected-tab/focus color for the rice's muted red. Selectors
+ * target Proton-era Firefox (verified against recent ESR/rapid
+ * releases); if a point release changes them, the stock Dark theme
+ * still holds up fine on its own.
+ */
+
+:root{
+  --lastline-accent: #b1483d;
+}
+
+.tabbrowser-tab[selected] .tab-background {
+  background-color: color-mix(in srgb, var(--lastline-accent) 22%, transparent) !important;
+}
+
+.tabbrowser-tab[selected] .tab-line {
+  background-color: var(--lastline-accent) !important;
+}
+
+#urlbar[focused="true"] > #urlbar-background {
+  border-color: var(--lastline-accent) !important;
+}
+
+#urlbar-container .urlbar-icon.notification-anchor-icon,
+.urlbar-page-action.searchButton {
+  color: var(--lastline-accent) !important;
+}

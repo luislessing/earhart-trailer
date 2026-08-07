@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>THE ARCHIVE — Sightings</title>
+<style>
+  :root{
+    --bg: #1d2124; --bg-alt: #2b3136; --border: #34393e;
+    --ink: #d7dadb; --ink-dim: #98a0a4; --ink-faint: #5e6569;
+    --accent: #b1483d; --accent-dim: #5e2c25;
+  }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--bg); color:var(--ink);
+        font-family: Inter, -apple-system, "Segoe UI", "Noto Sans", sans-serif; }
+  .band{ padding:34px 24px 22px; text-align:center; border-bottom:1px solid var(--border); }
+  .band h1{ margin:0 0 6px; font-family:Georgia,"Iowan Old Style",ui-serif,serif;
+             font-size:34px; letter-spacing:.02em; }
+  .band .tag{ font-size:13px; color:var(--ink-faint); font-style:italic; }
+  .band .ctr{ margin-top:12px; font-size:11px; color:var(--ink-faint); }
+  .band .ctr b{ color:var(--accent); font-family:"JetBrains Mono","DejaVu Sans Mono",monospace; }
+  .navtabs{ display:flex; gap:2px; padding:10px 18px; border-bottom:1px solid var(--border); }
+  .navtabs span{ padding:5px 13px; font-size:12px; border-radius:4px; color:var(--ink-dim); }
+  .navtabs span.on{ background:var(--accent-dim); color:#f2e4e1; }
+  table{ width:100%; border-collapse:collapse; font-size:13px; }
+  thead th{ text-align:left; padding:8px 18px; color:var(--ink-faint); font-weight:normal; border-bottom:1px solid var(--border); }
+  td{ padding:9px 18px; border-bottom:1px solid rgba(255,255,255,0.03); color:var(--ink-dim); }
+  tr:nth-child(even) td{ background:rgba(255,255,255,0.015); }
+  td.topic{ color:var(--ink); }
+  td.topic a{ color:inherit; text-decoration:none; }
+  td.topic a:hover{ color:var(--accent); text-decoration:underline; }
+  td.num{ text-align:right; font-variant-numeric:tabular-nums; width:70px; }
+  .unread{ display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--accent); margin-right:9px; }
+  .pin{ color:var(--accent); font-size:11px; margin-right:5px; }
+  .pagefoot{ display:flex; justify-content:space-between; padding:12px 18px; font-size:11px; color:var(--ink-faint); }
+</style>
+</head>
+<body>
+  <div class="band">
+    <h1>THE ARCHIVE</h1>
+    <div class="tag">for people who noticed.</div>
+    <div class="ctr">you are visitor no. <b>004217</b> · best viewed at 800×600 · working offline since 03:12</div>
+  </div>
+  <div class="navtabs">
+    <span class="on">Sightings</span><span>Redacted Docs</span><span>Off-Grid Living</span><span>Water Watch</span><span>Introductions</span>
+  </div>
+  <table>
+    <thead><tr><th>Topic</th><th class="num">Replies</th><th class="num">Views</th><th>Last post</th></tr></thead>
+    <tbody>
+      <tr><td class="topic"><span class="pin">📌</span><a href="#">anyone else notice the water tower schedule changed?</a></td><td class="num">38</td><td class="num">1,204</td><td>03:41</td></tr>
+      <tr><td class="topic"><span class="unread"></span><a href="#">NEW satellite pass tonight — watch thread</a></td><td class="num">12</td><td class="num">356</td><td>03:37</td></tr>
+      <tr><td class="topic"><span class="unread"></span><a href="#">the birds have been circling for 3 days [pics]</a></td><td class="num">64</td><td class="num">2,981</td><td>03:22</td></tr>
+      <tr><td class="topic"><a href="#">off-grid solutions that actually work</a></td><td class="num">21</td><td class="num">877</td><td>02:58</td></tr>
+      <tr><td class="topic"><span class="unread"></span><a href="#">REDACTED memo leaked (mods please don't remove)</a></td><td class="num">97</td><td class="num">6,140</td><td>02:14</td></tr>
+      <tr><td class="topic"><a href="#">weekly check-in: what did you notice today</a></td><td class="num">9</td><td class="num">210</td><td>gestern</td></tr>
+    </tbody>
+  </table>
+  <div class="pagefoot"><span>Page 1 of 47</span><span>Powered by ArchiveBoard v2.3</span></div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+/* ~/.config/gtk-3.0/gtk.css
+ *
+ * Materia-dark ships a teal accent. This nudges the bits GTK apps
+ * expose through named colors toward the rice's muted red instead,
+ * so selections / focus rings / links match the wallpaper and the
+ * forum. It's a best-effort override, not a theme fork — GTK theme
+ * internals change between versions, so if a widget or two doesn't
+ * pick it up, Materia-dark on its own still looks correct and dark.
+ */
+
+@define-color theme_selected_bg_color   #b1483d;
+@define-color theme_selected_fg_color   #f2e4e1;
+@define-color accent_color              #b1483d;
+@define-color accent_bg_color           #b1483d;
+@define-color accent_fg_color           #f2e4e1;
+
+*:selected,
+*:selected:focus {
+  background-color: #b1483d;
+  color: #f2e4e1;
+}
+
+entry:focus,
+button:checked,
+.suggested-action {
+  border-color: #b1483d;
+}
+
+.suggested-action {
+  background-color: #b1483d;
+  background-image: none;
+}
